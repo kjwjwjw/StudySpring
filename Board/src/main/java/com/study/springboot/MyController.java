@@ -17,9 +17,8 @@ public class MyController {
 		@Autowired
 		IBoardDao boardDao;
 		
-	
 		@RequestMapping("/")
-		@ResponseBody
+//		@ResponseBody
 		public String root() {
 //			return "root() 함수 호출됨.";
 			
@@ -31,6 +30,7 @@ public class MyController {
 			List<BoardDto> list = boardDao.list();
 			model.addAttribute("list", list);
 			
+			System.out.println(list);
 			
 			return "listForm"; // "listForm.jsp" 디스패치 해줌.
 		}
