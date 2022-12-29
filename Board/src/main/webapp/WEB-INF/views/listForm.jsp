@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
     
 <!DOCTYPE html>
@@ -31,17 +32,22 @@
 			<th>날짜</th>
 			<th>조회수</th>
 	</tr>
-<%-- 	<c:forEach var="dto" items= "${ list }"> --%>
-<!-- 		<tr> -->
-<%-- 			<td>${ dto.board_idx }</td> --%>
-<%-- 			<td>${ dto.board_name }</td> --%>
-<%-- 			<td>${ dto.board_title }</td> --%>
-<%-- 			<td>${ dto.board_date }</td> --%>
-<%-- 			<td>${ dto.board_hit }</td> --%>
-<!-- 		</tr> -->
+	<c:forEach var="dto" items="${ list }">
+		<tr>
+			<td>${ dto.board_idx }</td>
+			<td>${ dto.board_name }</td>
+			<td>
+				<a href="contentForm?board_idx=${dto.board_idx}"> ${dto.board_title }</a>
+			</td>
+			<td>
+				<c:set var= "dateVar" value="${ dto.board_date }" />
+				<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd" />
+			</td>
+			<td>${ dto.board_hit }</td>
+		</tr>
 	
 	
-<%-- 	</c:forEach> --%>
+	</c:forEach>
 	<tr>
 		<td colspan= "5"><a href="writeForm">글작성</a></td>
 	</tr>

@@ -34,4 +34,9 @@ public class MyController {
 			
 			return "listForm"; // "listForm.jsp" 디스패치 해줌.
 		}
+		
+		@RequestMapping("/writeForm")
+		public String writeForm() {
+			return "writeForm";
+		}
 }
